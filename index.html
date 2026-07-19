@@ -1,351 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>IP.geek.nz | The IP Nerd Zone</title>
+<title>IP.geek.nz | The IP Nerd Zone</title>
 
-  <meta
-    name="description"
-    content="The IP Nerd Zone. Exploring artificial intelligence, intellectual property, LegalTech, innovation, open-source experiments, and MIPIM research."
-  >
+<style>
 
-  <style>
-    :root {
-      --background: #07111f;
-      --surface: #101d30;
-      --surface-hover: #172944;
-      --text: #f4f7fb;
-      --muted: #9fb0c6;
-      --accent: #6ee7ff;
-      --border: #263b57;
-      --max-width: 1120px;
-    }
+body{
+    margin:0;
+    background:#0d1117;
+    color:#e6edf3;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+header{
+    background:#161b22;
+    padding:25px;
+    border-bottom:1px solid #30363d;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+header h1{
+    margin:0;
+    font-size:42px;
+}
 
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top right, #15325a 0, transparent 35%),
-        var(--background);
-      line-height: 1.6;
-    }
+header p{
+    color:#8b949e;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+nav{
+    background:#010409;
+    padding:15px;
+}
 
-    .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
+nav a{
+    color:#58a6ff;
+    text-decoration:none;
+    margin-right:25px;
+    font-weight:bold;
+}
 
-    header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(7, 17, 31, 0.88);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(12px);
-      z-index: 10;
-    }
+.hero{
+    padding:80px 60px;
+}
 
-    nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
+.hero h2{
+    font-size:48px;
+    margin-bottom:20px;
+}
 
-    .brand {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
+.hero p{
+    font-size:22px;
+    max-width:900px;
+    line-height:1.6;
+}
 
-    .brand span {
-      color: var(--accent);
-    }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    padding:60px;
+}
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+.card{
+    background:#161b22;
+    padding:25px;
+    border-radius:12px;
+    border:1px solid #30363d;
+    transition:.3s;
+}
 
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+.card:hover{
+    border-color:#58a6ff;
+    transform:translateY(-4px);
+}
 
-    .hero {
-      padding: 110px 0 80px;
-    }
+footer{
+    text-align:center;
+    padding:40px;
+    color:#8b949e;
+}
 
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-    }
+</style>
 
-    h1 {
-      max-width: 850px;
-      margin: 18px 0 24px;
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      line-height: 0.98;
-      letter-spacing: -0.065em;
-    }
-
-    .hero-copy {
-      max-width: 720px;
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 36px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 13px 20px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-    }
-
-    .button-primary {
-      color: #04101c;
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .button-secondary:hover {
-      background: var(--surface);
-    }
-
-    .section {
-      padding: 35px 0 85px;
-    }
-
-    .section-heading {
-      margin-bottom: 30px;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.04em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      min-height: 220px;
-      padding: 26px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--surface);
-      transition: transform 160ms ease, background 160ms ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      background: var(--surface-hover);
-    }
-
-    .card-number {
-      color: var(--accent);
-      font-family: monospace;
-      font-size: 0.85rem;
-    }
-
-    .card h3 {
-      margin: 28px 0 10px;
-      font-size: 1.3rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .manifesto {
-      padding: 34px;
-      border-left: 4px solid var(--accent);
-      background: var(--surface);
-      border-radius: 0 16px 16px 0;
-    }
-
-    .manifesto p {
-      max-width: 830px;
-      margin: 0;
-      font-size: clamp(1.25rem, 3vw, 2rem);
-      line-height: 1.4;
-      letter-spacing: -0.025em;
-    }
-
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 850px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 18px 0;
-      }
-    }
-
-    @media (max-width: 580px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 75px;
-      }
-
-      .nav-links {
-        gap: 13px;
-      }
-    }
-  </style>
 </head>
 
 <body>
-  <header>
-    <nav class="container" aria-label="Main navigation">
-      <a class="brand" href="/">IP<span>.geek.nz</span></a>
 
-      <div class="nav-links">
-        <a href="#explore">Explore</a>
-        <a href="#mission">Mission</a>
-        <a href="https://github.com/Sahshim">GitHub</a>
-      </div>
-    </nav>
-  </header>
+<header>
 
-  <main>
-    <section class="hero container">
-      <div class="eyebrow">The IP Nerd Zone</div>
+<h1>IP.geek.nz</h1>
 
-      <h1>Exploring IP through code, AI and curiosity.</h1>
+<p>The IP Nerd Zone</p>
 
-      <p class="hero-copy">
-        A public laboratory for artificial intelligence, intellectual
-        property, LegalTech, innovation, open-source experiments,
-        prompt libraries, research and MIPIM notes.
-      </p>
+</header>
 
-      <div class="actions">
-        <a class="button button-primary" href="#explore">
-          Explore the lab
-        </a>
+<nav>
 
-        <a
-          class="button button-secondary"
-          href="https://github.com/Sahshim/ip.geek.nz"
-        >
-          View on GitHub
-        </a>
-      </div>
-    </section>
+<a href="#">AI</a>
 
-    <section class="section container" id="explore">
-      <div class="section-heading">
-        <h2>Explore the zone</h2>
-        <p>The first collections are now being built.</p>
-      </div>
+<a href="#">LegalTech</a>
 
-      <div class="grid">
-        <article class="card">
-          <div class="card-number">01</div>
-          <h3>AI Experiments</h3>
-          <p>Practical tests of AI workflows, agents and research tools for IP.</p>
-        </article>
+<a href="#">IP</a>
 
-        <article class="card">
-          <div class="card-number">02</div>
-          <h3>LegalTech Reviews</h3>
-          <p>Hands-on evaluations of software used in legal and IP work.</p>
-        </article>
+<a href="#">Projects</a>
 
-        <article class="card">
-          <div class="card-number">03</div>
-          <h3>Prompt Library</h3>
-          <p>Reusable prompts for research, analysis, strategy and governance.</p>
-        </article>
+<a href="#">Research</a>
 
-        <article class="card">
-          <div class="card-number">04</div>
-          <h3>GitHub Projects</h3>
-          <p>Open tools, prototypes, documentation and build-in-public projects.</p>
-        </article>
+<a href="#">Prompt Library</a>
 
-        <article class="card">
-          <div class="card-number">05</div>
-          <h3>MIPIM Notes</h3>
-          <p>Structured learning notes and reflections from IP management studies.</p>
-        </article>
+<a href="#">About</a>
 
-        <article class="card">
-          <div class="card-number">06</div>
-          <h3>Research Library</h3>
-          <p>Research on IP, AI governance, innovation and emerging technology.</p>
-        </article>
-      </div>
-    </section>
+</nav>
 
-    <section class="section container" id="mission">
-      <div class="manifesto">
-        <p>
-          Learn publicly. Experiment openly. Document the process.
-          Share resources that help people understand how AI is changing
-          intellectual property and innovation.
-        </p>
-      </div>
-    </section>
-  </main>
+<section class="hero">
 
-  <footer>
-    <div class="container">
-      IP.geek.nz. The IP Nerd Zone. Built openly on GitHub.
-    </div>
-  </footer>
+<h2>Experiment. Build. Publish.</h2>
+
+<p>
+
+A personal laboratory dedicated to Artificial Intelligence, Intellectual Property, LegalTech, Innovation and Responsible AI.
+
+</p>
+
+</section>
+
+<section class="grid">
+
+<div class="card">
+
+<h3>AI Experiments</h3>
+
+<p>Building practical AI tools and agents.</p>
+
+</div>
+
+<div class="card">
+
+<h3>LegalTech</h3>
+
+<p>Automation, workflow and document intelligence.</p>
+
+</div>
+
+<div class="card">
+
+<h3>IP Research</h3>
+
+<p>Patents, trademarks and innovation strategy.</p>
+
+</div>
+
+<div class="card">
+
+<h3>GitHub Projects</h3>
+
+<p>Open source software and experiments.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Prompt Library</h3>
+
+<p>Production-ready prompts for AI platforms.</p>
+
+</div>
+
+<div class="card">
+
+<h3>MIPIM Notes</h3>
+
+<p>Research, papers and learning journal.</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 IP.geek.nz
+
+</footer>
+
 </body>
+
 </html>
